@@ -4,8 +4,8 @@ jQuery(document).ready(function() {
   var TestLoader = require('ember-cli/test-loader')['default'];
   var urlParams = QUnit.urlParams;
   var moduleFilter;
-  if (query.module_filter) {
-    moduleFilter = new RegExp(decodeURIComponent(query.module_filter));
+  if (urlParams.module_filter) {
+    moduleFilter = new RegExp(decodeURIComponent(urlParams.module_filter));
   }
   TestLoader.prototype.shouldLoadModule = function(moduleName) {
     if (moduleFilter) {
