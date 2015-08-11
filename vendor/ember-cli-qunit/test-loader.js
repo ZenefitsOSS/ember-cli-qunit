@@ -2,8 +2,19 @@
 
 jQuery(document).ready(function() {
   var TestLoader = require('ember-cli/test-loader')['default'];
+  var urlParams = QUnit.urlParams;
+  var moduleFilter;
+  if (urlParams.module_filter) {
+    moduleFilter = new RegExp(decodeURIComponent(urlParams.module_filter));
+  }
   TestLoader.prototype.shouldLoadModule = function(moduleName) {
-    return moduleName.match(/[-_]test$/) || (!QUnit.urlParams.nojshint && moduleName.match(/\.jshint$/));
+    if (moduleFilter) {
+      return moduleFilter.test(moduleName) && (/[-_]test$/.test(moduleName) ||
+            (!urlParams.nojshint && /\.jshint$/.test(moduleName)));
+    }
+    else {
+      return /[-_]test$/.test(moduleName) || (!urlParams.nojshint && /\.jshint$/.test(moduleName));
+    }
   };
 
   TestLoader.prototype.moduleLoadFailure = function(moduleName, error) {
