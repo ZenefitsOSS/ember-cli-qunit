@@ -4,11 +4,18 @@ jQuery(document).ready(function() {
   var TestLoaderModule = require('ember-cli/test-loader');
   var TestLoader = TestLoaderModule['default'];
   var addModuleIncludeMatcher = TestLoaderModule['addModuleIncludeMatcher'];
-
-  function moduleMatcher(moduleName) {
-    return moduleName.match(/\/.*[-_]test$/) || (!QUnit.urlParams.nojshint && moduleName.match(/\.jshint$/));
+  var urlParams = QUnit.urlParams;
+  var moduleFilter;
+  
+  if (urlParams.module_filter) {
+    moduleFilter = new RegExp(decodeURIComponent(urlParams.module_filter));
   }
 
+  function moduleMatcher(moduleName) {
+    return ( !moduleFilter || moduleName.match(moduleFilter) ) && 
+        ( moduleName.match(/\/.*[-_]test$/) || (!urlParams.nojshint && moduleName.match(/\.jshint$/)) );
+  };
+  
   if (addModuleIncludeMatcher) {
     addModuleIncludeMatcher(moduleMatcher);
   } else {
