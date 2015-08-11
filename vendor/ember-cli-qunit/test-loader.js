@@ -28,10 +28,19 @@
     var TestLoader = TestLoaderModule['default'];
     var addModuleExcludeMatcher = TestLoaderModule['addModuleExcludeMatcher'];
     var addModuleIncludeMatcher = TestLoaderModule['addModuleIncludeMatcher'];
+    var moduleFilter;
+
+    if (QUnit.urlParams.module_filter) {
+      moduleFilter = new RegExp(decodeURIComponent(QUnit.urlParams.module_filter));
+    }
+
+    if (QUnit.urlParams.time) {
+      timekeeper.travel(parseFloat(QUnit.urlParams.time));
+    }
 
     function excludeModule(moduleName) {
-      return QUnit.urlParams.nolint &&
-        moduleName.match(/\.(jshint|lint-test)$/);
+      return ( moduleFilter && !moduleName.match(moduleFilter) ) ||
+        ( QUnit.urlParams.nolint && moduleName.match(/\.(jshint|lint-test)$/) );
     }
 
     function includeModule(moduleName) {

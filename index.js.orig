@@ -80,9 +80,14 @@ module.exports = {
         'vendor/qunit/qunit.css',
         'vendor/qunit-notifications/index.js',
         'vendor/ember-cli-qunit/qunit-configuration.js',
+<<<<<<< HEAD
+        'vendor/ember-cli-qunit/test-loader.js'
+      ];
+=======
         'vendor/ember-cli-qunit/test-loader.js',
         'vendor/ember-cli-qunit/timekeeper.js'
-      ];
+      );
+>>>>>>> 7881813... Don't try and require timekeeper as it doesn't work
 
       var addonOptions = target.options['ember-cli-qunit'];
       // Skip if disableContainerStyles === false.
