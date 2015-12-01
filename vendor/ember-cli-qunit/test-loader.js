@@ -4,11 +4,16 @@ jQuery(document).ready(function() {
   var TestLoaderModule = require('ember-cli/test-loader');
   var TestLoader = TestLoaderModule['default'];
   var addModuleIncludeMatcher = TestLoaderModule['addModuleIncludeMatcher'];
+  var timekeeper = require('timekeeper')['default'];
   var urlParams = QUnit.urlParams;
   var moduleFilter;
   
   if (urlParams.module_filter) {
     moduleFilter = new RegExp(decodeURIComponent(urlParams.module_filter));
+  }
+
+  if (urlParams.time) {
+    timekeeper.travel(parseFloat(urlParams.time));
   }
 
   function moduleMatcher(moduleName) {

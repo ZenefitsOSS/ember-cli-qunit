@@ -25,7 +25,8 @@
   },
   "homepage": "https://github.com/ember-cli/ember-cli-qunit",
   "dependencies": {
-    "broccoli-jshint": "^1.0.0"
+    "broccoli-jshint": "^1.0.0",
+    "timekeeper": "0.0.5"
   },
   "bundledDependencies": []
 }
