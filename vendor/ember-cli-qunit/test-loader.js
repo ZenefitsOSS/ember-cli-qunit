@@ -5,7 +5,6 @@ jQuery(document).ready(function() {
   var TestLoader = TestLoaderModule['default'];
   var addModuleExcludeMatcher = TestLoaderModule['addModuleExcludeMatcher'];
   var addModuleIncludeMatcher = TestLoaderModule['addModuleIncludeMatcher'];
-  var timekeeper = require('timekeeper')['default'];
   var moduleFilter;
 
   if (QUnit.urlParams.module_filter) {

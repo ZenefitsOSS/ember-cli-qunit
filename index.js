@@ -146,7 +146,8 @@ module.exports = {
 
       fileAssets.push(
         'vendor/ember-cli-qunit/qunit-configuration.js',
-        'vendor/ember-cli-qunit/test-loader.js'
+        'vendor/ember-cli-qunit/test-loader.js',
+        'vendor/ember-cli-qunit/timekeeper.js'
       );
 
       var addonOptions = target.options['ember-cli-qunit'];
