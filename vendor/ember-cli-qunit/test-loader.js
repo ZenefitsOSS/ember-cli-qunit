@@ -2,7 +2,6 @@
 
 jQuery(document).ready(function() {
   var TestLoader = require('ember-cli/test-loader')['default'];
-  var timekeeper = require('timekeeper')['default'];
   var urlParams = QUnit.urlParams;
   var moduleFilter;
   if (urlParams.module_filter) {
