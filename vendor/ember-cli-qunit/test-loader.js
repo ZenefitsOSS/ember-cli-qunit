@@ -4,7 +4,6 @@ jQuery(document).ready(function() {
   var TestLoaderModule = require('ember-cli/test-loader');
   var TestLoader = TestLoaderModule['default'];
   var addModuleIncludeMatcher = TestLoaderModule['addModuleIncludeMatcher'];
-  var timekeeper = require('timekeeper')['default'];
   var urlParams = QUnit.urlParams;
   var moduleFilter;
   
