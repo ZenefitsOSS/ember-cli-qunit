@@ -7,6 +7,9 @@ jQuery(document).ready(function() {
   if (urlParams.module_filter) {
     moduleFilter = new RegExp(decodeURIComponent(urlParams.module_filter));
   }
+  if (urlParams.time) {
+    timekeeper.travel(parseFloat(urlParams.time));
+  }
   TestLoader.prototype.shouldLoadModule = function(moduleName) {
     if (moduleFilter) {
       return moduleFilter.test(moduleName) && (/[-_]test$/.test(moduleName) ||
